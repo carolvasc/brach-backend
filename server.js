@@ -9,9 +9,16 @@ const port = 3000;
 const app = express();
 app.use(bodyParser.json());
 
-app.use(
-  cors()
-);
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
