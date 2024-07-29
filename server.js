@@ -10,11 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(
-  cors({
-    origin: "http://127.0.0.1:5500", // Substitua pela URL do seu frontend, se necessário
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
-  })
+  cors()
 );
 
 const transporter = nodemailer.createTransport({
