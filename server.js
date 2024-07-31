@@ -7,11 +7,8 @@ const cors = require("cors");
 const port = 3000;
 
 const app = express();
+app.use(cors({ origin: 'https://www.agenciabrach.com.br' }));
 app.use(bodyParser.json());
-
-app.use(
-  cors()
-);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
