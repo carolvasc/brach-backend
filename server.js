@@ -7,7 +7,11 @@ const cors = require("cors");
 const port = 3000;
 
 const app = express();
-app.use(cors({ origin: 'https://www.agenciabrach.com.br' }));
+app.use(cors({
+  origin: 'https://agenciabrach.com.br',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
