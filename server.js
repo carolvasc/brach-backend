@@ -7,18 +7,12 @@ const cors = require("cors");
 const port = 3000;
 
 const app = express();
+app.use(cors({
+  origin: 'https://www.agenciabrach.com.br',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
-
-const corsOptions = {
-  origin: "*",
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
-
-app.options("*", cors(corsOptions));
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
